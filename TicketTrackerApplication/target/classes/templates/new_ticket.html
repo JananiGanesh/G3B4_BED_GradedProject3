@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+
+<style type="text/css">
+p {
+	text-align: center;
+}
+h3{
+text-align:center;
+}
+body {
+      margin: 0;
+      padding-bottom: 100px; /* Add padding to accommodate the footer */
+    }
+footer {
+	 position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100px; /* Adjust the height as per your requirements */
+      background-color: #f5f5f5;
+      text-align: center;
+      line-height: 100px;
+      padding: 5px;
+}
+
+
+ th {
+      background-color: #f5f5f5;
+      padding: 30px;
+    }
+     tr {
+      border: none;
+      padding: 30px;
+      
+    }
+   
+    tr td,
+    tr th {
+      padding: 5px; /* Add padding to table cells within table rows */
+      margin-left:auto;
+      margin-right:auto;
+      padding-left: 30px; /* Add left spacing to table cells */
+      padding-right: 30px; /* Add right spacing to table cells */
+    }
+    table {
+      border: 1px solid black;
+      margin-left: auto;
+      margin-right: auto; 
+      margin-top: 20px;
+      margin-bottom: 20px;
+      width: 75%; 
+      height: 300px;
+      border-collapse: collapse;
+      
+    }
+    
+</style>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+
+<title>Save Ticket</title>
+<link rel="stylesheet" th:href="@{/fontawesome/css/all.css}"/>
+<link rel="stylesheet" th:href="@{/fontawesome/css/fontawesome.min.css}"/>
+<link rel="stylesheet" th:href="@{/richtexteditor/richtext.min.css}"/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script th:src="@{/richtexteditor/jquery.richtext.min.js}" defer></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#content").richText();
+});
+	</script>
+</head>
+
+<body>
+
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+		<div class="container">
+			<a class="navbar-brand" href="/"></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a class="nav-link"
+						href="/tickettracker/">Home <span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="/tickettracker/tickets">Tickets</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="/tickettracker/new">New Ticket</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+
+		
+		
+		<form action="#" th:action="@{/tickettracker/save}"
+			th:object="${ticket}" method="POST">
+			
+			<table>
+            <thead>
+            <tr>
+            <th> <h3>Create Ticket</h3>
+
+            </th>
+            </tr>
+            </thead>
+         
+            <tbody>
+            <tr>
+            <td>
+            <hr>
+            <label>Title</label>
+            </td>
+            </tr>
+            <tr>
+            <td>
+            <input type="text" th:field="*{ticketTitle}"
+				class="form-control mb-7 col-15" placeholder="Enter Title">
+			</td>
+            </tr>
+            <tr>
+            <td>
+            <label>Short
+				Description</label></td>
+            </tr>
+            <tr>
+            <td>
+				<textarea  id="shortdescription" th:field="*{ticketShortDescription}" rows="4" cols="110" placeholder="Enter short description"></textarea>
+				</td>
+            </tr>
+            <tr>
+            <td>
+             <label>Content</label></td>
+            </tr>
+            <tr>
+            <td>
+             <textarea id="content" th:field="*{ticketContent}" rows="4" cols="3"></textarea>
+             </td>
+            </tr>
+            <tr>
+            <td>
+             <label>Date</label>
+             </td>
+             </tr>
+            <tr>
+            <td>
+            <input type="date" th:field="*{ticketCreatedOn}"
+				class="form-control mb-4 col-4">
+            </td>
+            </tr>
+            <tr>
+            <td>
+            <button type="submit" class="btn btn-info col-2">Submit</button>
+            </td>
+            </tr>
+            </tbody>
+			
+			</table>
+			<hr>
+			
+		</form>	
+
+	</div>
+	
+
+	<footer>
+			Copyright &copy 2023 GreatLearning All rights reserved
+		</footer>
+		
+	
+	
+</body>
+
+</html>
